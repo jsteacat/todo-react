@@ -11,6 +11,8 @@ export interface ITodosProps {
     setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
 }
 
-export interface ITodoItemProps extends ITodosProps {
+export interface ITodoItemProps {
     todo: ITodo;
+    onToggleComplete: () => void;
+    onDelete: () => void;
 }
