@@ -4,12 +4,12 @@ import TodoItem from './TodoItem.tsx'
 function TodoList({ todos, setTodos }: ITodosProps) {
     const toggleTodoCompletion = (id: number) => {
         setTodos(
-            todos.map((t) => t.id === id ? { ...t, completed: !t.completed } : t),
+            todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo),
         )
     }
 
     const deleteTodo = (id: number) => {
-        setTodos(todos.filter((t) => t.id !== id))
+        setTodos(todos.filter((todo) => todo.id !== id))
     }
 
     return (
