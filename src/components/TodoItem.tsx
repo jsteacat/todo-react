@@ -2,10 +2,7 @@ import type { ITodoItemProps } from '../types.ts'
 
 function TodoItem({ todo, onToggleComplete, onDelete }: ITodoItemProps) {
     return (
-        <li
-            key={todo.id}
-            className="flex items-center p-3 rounded-lg bg-slate-100 border border-gray-200"
-        >
+        <li className="flex items-center p-3 rounded-lg bg-slate-100 border border-gray-200">
             <input
                 type="checkbox"
                 className="mr-2 h-5 w-5 text-blue-600"
