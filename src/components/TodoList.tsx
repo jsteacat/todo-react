@@ -1,15 +1,21 @@
-import type { ITodosProps } from '../types.ts'
+import type { ITodoBasic, ITodosProps } from '../types.ts'
 import TodoItem from './TodoItem.tsx'
 
 function TodoList({ todos, setTodos }: ITodosProps) {
-    const toggleTodoCompletion = (id: number) => {
+    function toggleTodoCompletion(id: number) {
         setTodos(
             todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo),
         )
     }
 
-    const deleteTodo = (id: number) => {
+    function deleteTodo(id: number) {
         setTodos(todos.filter((todo) => todo.id !== id))
+    }
+
+    function updateSublist(id: number, sublist: ITodoBasic[]) {
+        setTodos(
+            todos.map((todo) => todo.id === id ? { ...todo, subList: sublist } : todo),
+        )
     }
 
     return (
@@ -19,6 +25,7 @@ function TodoList({ todos, setTodos }: ITodosProps) {
                     <TodoItem
                         key={todo.id}
                         todo={todo}
+                        updateSubList={(sublist: ITodoBasic[]) => updateSublist(todo.id, sublist)}
                         onToggleComplete={() => toggleTodoCompletion(todo.id)}
                         onDelete={() => deleteTodo(todo.id)}
                     />
